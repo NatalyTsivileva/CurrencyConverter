@@ -88,6 +88,9 @@ dependencies {
     // coil
     implementation(libs.coil)
 
+    //glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
     // room
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)

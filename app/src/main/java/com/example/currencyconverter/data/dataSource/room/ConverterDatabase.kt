@@ -11,7 +11,7 @@ import com.example.currencyconverter.data.dataSource.room.transaction.dbo.Transa
 
 @Database(entities = [AccountDbo::class, TransactionDbo::class], version = 1)
 @TypeConverters(Converters::class)
-abstract class ConverterDatabase: RoomDatabase() {
+abstract class ConverterDatabase : RoomDatabase() {
     abstract fun accountDao(): AccountDao
     abstract fun transactionDao(): TransactionDao
 }

@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.currencies.CurrenciesFragment">
 
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/currenciesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="32sp"
-        android:text="Фрагмент со списком валют" />
-
+        tools:listitem="@layout/currency_item_layout"/>
 </FrameLayout>

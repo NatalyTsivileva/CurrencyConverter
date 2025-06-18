@@ -5,12 +5,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.currencyconverter.data.dataSource.room.converter.Converters
-import java.math.BigDecimal
 import java.time.LocalDateTime
 
 @Entity(tableName = "transactions")
 @TypeConverters(Converters::class)
-data class TransactionDbo (
+data class TransactionDbo(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     @ColumnInfo(name = "currency_code_from")

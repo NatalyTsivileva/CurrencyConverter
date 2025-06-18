@@ -9,7 +9,7 @@
         android:id="@+id/currenciesFragment"
         android:name="com.example.currencyconverter.ui.currencies.CurrenciesFragment"
         android:label="fragment_currency"
-        tools:layout="@layout/fragment_currency" >
+        tools:layout="@layout/fragment_currency">
         <action
             android:id="@+id/action_currenciesFragment_to_exchangeFragment"
             app:destination="@id/exchangeFragment" />
