@@ -22,7 +22,14 @@
         android:id="@+id/exchangeFragment"
         android:name="com.example.currencyconverter.ui.exchange.ExchangeFragment"
         android:label="fragment_exchange"
-        tools:layout="@layout/fragment_exchange" />
+        tools:layout="@layout/fragment_exchange" >
+        <argument
+            android:name="fromCurrency"
+            app:argType="com.example.currencyconverter.domain.entity.Currency" />
+        <argument
+            android:name="toCurrency"
+            app:argType="com.example.currencyconverter.domain.entity.Currency" />
+    </fragment>
     <fragment
         android:id="@+id/transactionsFragment"
         android:name="com.example.currencyconverter.ui.transactions.TransactionsFragment"

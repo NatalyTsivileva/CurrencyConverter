@@ -5,12 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.currencyconverter.data.mapper.CurrencyMapper
 import com.example.currencyconverter.databinding.FragmentCurrencyBinding
 import com.example.currencyconverter.ui.data.Currency
 import com.example.currencyconverter.ui.list.CurrenciesAdapter
@@ -68,7 +71,18 @@ class CurrenciesFragment : Fragment() {
         binding?.currenciesList?.let {
             listAdapter = CurrenciesAdapter(object : CurrenciesClickListener {
                 override fun onCurrencyCardClickListener(currency: Currency) {
-                    TODO("Not yet implemented")
+                    viewModel.onFromCurrencyChanged(currency.abbreviation)
+                /*    val action = CurrenciesFragmentDirections
+                        .actionCurrenciesFragmentToExchangeFragment(
+                            *//*fromCurrency*//*listAdapter?.currentList?.firstOrNull(),
+                            *//*toCurrency*//*currency
+                        )*/
+                   // findNavController().navigate(action)
+                }
+
+                override fun onAmountTextChanged(amount: Double) {
+                    viewModel.onFromCurrencyAmountChanged(amount)
+                    Log.d("onFromCurrencyChanged","CHANGED")
                 }
             })
             it.adapter = listAdapter

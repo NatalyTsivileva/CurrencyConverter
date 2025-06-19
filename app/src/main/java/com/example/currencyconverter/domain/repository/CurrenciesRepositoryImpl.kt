@@ -15,9 +15,9 @@ class CurrenciesRepositoryImpl @Inject constructor(
         val remoteData = remote.getRates(baseCurrencyCode = baseCurrencyCode, amount = amount)
         val localData = database.accountDao().getAll()
 
-        return remoteData.map {
+        return remoteData.map { data->
             val amountOnAccount = localData.find { it.code ==  baseCurrencyCode }
-            CurrencyMapper.mapRemoteCurrency(rateDto = it, amount = amountOnAccount?.amount)
+            CurrencyMapper.mapRemoteCurrency(rateDto = data, amount = amountOnAccount?.amount)
         }
     }
 }

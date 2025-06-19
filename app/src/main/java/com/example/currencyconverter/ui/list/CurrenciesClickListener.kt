@@ -6,4 +6,5 @@ interface CurrenciesClickListener {
 
     fun onCurrencyCardClickListener(currency: Currency)
 
+    fun onAmountTextChanged(amount:Double)
 }

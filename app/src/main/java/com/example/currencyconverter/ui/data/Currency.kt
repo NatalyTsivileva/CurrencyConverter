@@ -1,8 +1,9 @@
 package com.example.currencyconverter.ui.data
 
 import androidx.annotation.DrawableRes
-import java.util.Locale
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Currency(
     @DrawableRes val flag:Int,
     val name: String,

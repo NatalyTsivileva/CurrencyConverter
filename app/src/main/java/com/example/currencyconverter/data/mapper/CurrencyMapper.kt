@@ -3,6 +3,7 @@ package com.example.currencyconverter.data.mapper
 import com.example.currencyconverter.R
 import com.example.currencyconverter.data.dataSource.remote.dto.RateDto
 import com.example.currencyconverter.ui.data.Currency
+import java.util.Locale
 
 object CurrencyMapper {
     fun mapRemoteCurrency(rateDto: RateDto, amount: Double?) =
@@ -10,10 +11,22 @@ object CurrencyMapper {
             name = mapName(rateDto),
             flag = mapFlag(rateDto),
             abbreviation = rateDto.currency,
-            course = rateDto.value,
+            course = String.format(Locale.getDefault(),"%.2f", rateDto.value).toDouble(),
             sign = mapSign(rateDto),
             amount = amount
         )
+
+    fun mapCurrency(countryCode: String, amount: Double): Currency {
+        val dto = RateDto(countryCode, amount)
+        return Currency(
+            name = mapName(dto),
+            flag = mapFlag(dto),
+            abbreviation = dto.currency,
+            course = dto.value,
+            sign = mapSign(dto),
+            amount = amount
+        )
+    }
 
     private fun mapName(dto: RateDto): String {
         return when (dto.currency) {
@@ -54,9 +67,9 @@ object CurrencyMapper {
         }
     }
 
-    private fun mapFlag(dto: RateDto):Int{
-        return when(dto.currency){
-            "EUR"-> R.drawable.icon_eur
+    private fun mapFlag(dto: RateDto): Int {
+        return when (dto.currency) {
+            "EUR" -> R.drawable.icon_eur
             "AUD" -> R.drawable.icon_aud
             "BGN" -> R.drawable.icon_bgn
             "BRL" -> R.drawable.icon_brl
